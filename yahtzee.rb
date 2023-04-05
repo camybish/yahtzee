@@ -6,28 +6,45 @@
 :dice5 => 1 + rand(5)
 }
 
-counter = 0
+@counter = 0
+@rolled_dice = []
 
 def play
     puts "Let's play Yahtzee"
     puts "'roll' the dice"
     input = gets.chomp
-    if input == "roll"
-        
-        @die.each_value do |dice|
-            puts dice
+    if @counter < 3
+        if input == "roll"
+            roll
+        elsif input == "hold some"
+            hold
+        elsif input == "hold all"
+            hold 
+        elsif input == "quit"
+            exit
         end
-        counter += 1
     end
 end
 
+def roll
+    @die.each_value { |dice| @rolled_dice << dice }
+    puts @rolled_dice.join(", ")
+    @counter += 1
+    play
+end
+
+def hold
+    puts "Feature coming soon"
+end
+
 def score 
+    
 end
 
 play 
 
 # 3 rolls per turn
-# scoreboard ---
+# --- scoreboard ---
 # aces  = count 1s
 #       = count 2s
 #       = count 3s
@@ -40,3 +57,8 @@ play
 # small straight = bank score -> 4 in a row
 # large straight = bank score -> 5 in a row
 # yahtzee! = bank score -> 5 matching
+# 
+# next steps
+# - show a fresh set of dice
+# - clear the old dice
+# - hold the dice
