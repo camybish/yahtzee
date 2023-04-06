@@ -11,15 +11,15 @@
 
 def play
     puts "Let's play Yahtzee"
-    puts "'roll' the dice"
+    puts "'roll' the dice ('hold some' or 'hold all' after the first roll)"
     input = gets.chomp
     if @counter < 3
         if input == "roll"
             roll
-        elsif input == "hold some"
+        elsif input == "hold some" && @counter > 0
             hold
-        elsif input == "hold all"
-            hold 
+        elsif input == "hold all" && @counter > 0
+            log_score
         elsif input == "quit"
             exit
         end
@@ -34,6 +34,10 @@ def roll
 end
 
 def hold
+    puts "Feature coming soon"
+end
+
+def log_score
     puts "Feature coming soon"
 end
 
