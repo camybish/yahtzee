@@ -42,7 +42,7 @@ def log_score
 end
 
 def score 
-    
+    puts "Feature coming soon"
 end
 
 play 
