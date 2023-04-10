@@ -1,16 +1,16 @@
 @die = {
-:dice1 => 1 + rand(5),
-:dice2 => 1 + rand(5),
-:dice3 => 1 + rand(5),
-:dice4 => 1 + rand(5),
-:dice5 => 1 + rand(5)
+:A => 1 + rand(5),
+:B => 1 + rand(5),
+:C => 1 + rand(5),
+:D => 1 + rand(5),
+:E => 1 + rand(5)
 }
 
 @counter = 0
 @rolled_dice = []
+@hand = []
 
 def play
-    puts "Let's play Yahtzee"
     puts "'roll' the dice ('hold some' or 'hold all' after the first roll)"
     input = gets.chomp
     if @counter < 3
@@ -30,11 +30,23 @@ def roll
     @die.each_value { |dice| @rolled_dice << dice }
     puts @rolled_dice.join(", ")
     @counter += 1
+    puts "A, B, C, D, E"
     play
 end
 
 def hold
-    puts "Feature coming soon"
+    puts "Type in the dice you want to hold"
+    input = gets.strip
+    selection = input.split("")
+    dice_key = {"A" => 0, "B" => 1, "C" => 2, "D" => 3, "E" => 4}
+    selection.each do |x|
+        @hand << @rolled_dice[dice_key[x].to_i]
+    end 
+    puts @hand.inspect
+#    @rolled_dice.map do |die|
+#       if 
+#       @hand << selection[die] 
+#    end
 end
 
 def log_score
@@ -45,6 +57,7 @@ def score
     puts "Feature coming soon"
 end
 
+puts "Let's play Yahtzee"
 play 
 
 # 3 rolls per turn
