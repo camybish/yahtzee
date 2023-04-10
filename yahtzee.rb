@@ -6,6 +6,12 @@
 :E => 1 + rand(5)
 }
 
+@scoring = {
+    :ACES => 0, :DEUCES => 0, :THREES => 0, :FOURS => 0, :FIVES => 0,
+    :SIXES => 0, :CHOICE => 0, :FOAK => 0, :FH => 0,
+    :SS => 0, :LS => 0, :YAHTZEE => 0
+}
+
 @counter = 0
 @hand = []
 @held_dice = 5
@@ -23,9 +29,12 @@ def play
             log_score
         elsif input == "quit"
             exit
+        elsif input == "score"
+            @scoring.values.sum
+        else
         end
     end
-    if @counter == 0 && input == "roll"
+    if @counter == 3 && input == "log"
         log_score
     end
 end
@@ -46,7 +55,7 @@ def roll
 end
 
 def hold
-    puts "\n Type in the dice you want to hold"
+    puts "\nType in the dice you want to hold"
     input = gets.strip
     selection = input.split("")
     dice_key = {"A" => 0, "B" => 1, "C" => 2, "D" => 3, "E" => 4}
@@ -61,10 +70,25 @@ end
 
 def log_score
     puts "Out of rolls"
+    puts @hand.inspect
+    puts @rolled_dice.inspect
+    final_hand = @hand.concat(@rolled_dice)
+    puts final_hand.inspect
+    score(final_hand)
 end
 
-def score 
-    puts "Feature coming soon"
+def score(final_hand)
+    puts "Choose where you want to log your score:"
+    puts "ACES(1)\nDEUCES(2)\nTHREES(3)\nFOURS(4)\nFIVES(5)\nSIXES(6)\n"
+    puts "Choice(c)\nFour of a kind(k)\nFull House(f)\nSmall Straight(s)\nLarge Straight(l)\n"
+    puts "YAHTZEE!(y)"
+    input = gets.chomp
+    case input
+    when "1"
+        final_score = final_hand.select { |n| n == 1 }.sum
+        @scoring[final_score]
+        puts "score so far:" + @scoring.values.sum.to_s
+    end
 end
 
 puts "Let's play Yahtzee"
