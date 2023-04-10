@@ -32,6 +32,8 @@ def play
         elsif input == "score"
             @scoring.values.sum
         else
+            puts "Input not valid"
+            play
         end
     end
     if @counter == 3 && input == "log"
@@ -86,7 +88,7 @@ def score(final_hand)
     case input
     when "1"
         final_score = final_hand.select { |n| n == 1 }.sum
-        @scoring[final_score]
+        @scoring[:ACES] = final_score
         puts "score so far:" + @scoring.values.sum.to_s
     end
 end
