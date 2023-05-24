@@ -65,7 +65,7 @@ def hold
         @hand << @rolled_dice[dice_key[x].to_i]
     end 
     puts @hand.inspect
-    @held_dice -= @hand.length
+    @held_dice -= selection.length
     puts "Turn " + @counter.to_s + "\n"
     play
 end
