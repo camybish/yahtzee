@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Yahtzee Game</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<style>
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    background-color: #ddddee;
+
+}
+</style>
+<body>
+  <header>
+    <h1>Yahtzee Game</h1>
+  </header>
+  <main>
+    <div class="dice-container">
+        <button name="" value="<%=@dice_roll[0]%>"><%=@dice_roll[0]%></button>&nbsp;&nbsp;
+        <button name="" value="<%=@dice_roll[1]%>"><%=@dice_roll[1]%></button>&nbsp;&nbsp;
+        <button name="" value="<%=@dice_roll[2]%>"><%=@dice_roll[2]%></button>&nbsp;&nbsp;
+        <button name="" value="<%=@dice_roll[3]%>"><%=@dice_roll[3]%></button>&nbsp;&nbsp;
+        <button name="" value="<%=@dice_roll[4]%>"><%=@dice_roll[4]%></button>&nbsp;&nbsp;
+    </div>
+    <div class="roll-button">
+      <button>Roll Dice</button>
+    </div>
+    <br>
+    <div class="numeral_scoreboard">
+        <table width="900" height="150" >
+            <tr>
+                <th>Players:</th>
+                <th>ACES</th>
+                <th>DEUCES</th>
+                <th>THREES</th>
+                <th>FOURS</th>
+                <th>FIVES</th>
+                <th>SIXES</th>
+                <th>BONUS +35</th>
+                <th>Numeral Score</th>
+            </tr>
+            <tr>
+                <td>Player 1</td>
+            </tr>
+            <tr>
+                <td>Player 2</td>
+            </tr>
+        
+        </table>
+        <br>
+    </div>
+    <div class="special_scoreboard">
+        <br>
+        <table width="700" height="150" >
+            <tr>
+                <th>CHOICE</th>
+                <th>FOUR OF A KIND</th> 
+                <th>FULL HOUSE</th>
+                <th>SMALL STRAIGHT</th>
+                <th>LARGE STRAIGHT</th>
+                <th>YAHTZEE</th>
+                <th>Special Score</th> 
+            </tr>            
+            <tr>
+                <td>Player 1</td>
+            </tr>
+            <tr>
+                <td>Player 2</td>
+            </tr>
+        </table>
+    </div>
+  </main>
+  <footer>
+    <p>© 2023 Your Company. All rights reserved.</p>
+  </footer>
+</body>
+</html>
