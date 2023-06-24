@@ -1,19 +1,15 @@
-require './app'
-require 'rack/test'
+require_relative '../lib/yahtzee'
 
-describe Application do
-    # This is so we can use rack-test helper methods.
-    include Rack::Test::Methods
-  
-    # We need to declare the `app` value by instantiating the Application
-    # class so our tests work.
-    let(:app) { Application.new }
-  
-    context "GET to /" do
-        it 'contains a h1 title' do
-            response = get('/')
-    
-            expect(response.body).to include('<h1>Hello</h1>')
-        end
+describe Yahtzee do 
+    it "displays dice [arr] after roll is called" do 
+        game = Yahtzee.new
+        allow(game).to receive(:roll).and_return([1, 1, 1, 1, 1])
+        expect( game.roll ).to eq [1,1,1,1,1]
+    end
+
+    it "moves dice to hand after a roll" do 
+        game = Yahtzee.new
+        allow(game).to receive(:roll).and_return([5, 5, 5, 2, 1])
+        expect(game.hold('abc')).to eq "You've grabbed: 5, 5, 5"
     end
 end
