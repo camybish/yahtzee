@@ -99,3 +99,26 @@ TODO:
 Next on the agenda is getting random numbers to appear on the screen, this may take some research into better randomisation methods
 
 14 Jun - Maybe use vercel to deploy
+
+25 Jun - we need to reorganise the way dice are held
+
+For that let's try an example:
+
+[5,5,5,2,1]
+
+A decent roll, let's hold the 5s
+
+yahtzee.hold('abc')
+
+the program will check for the letters between a and e then assign them to the hand array
+
+hand = [5,5,5]
+dice = [5,5,5,2,1]
+
+Once that's done, it needs to remove them from the dice array
+
+This is the tricky bit. It might be easier to make them both hashes(objects) OR make a new array using the indexes used to make the new hand array. Then you compare the difference for what else can be rolled
+
+hand = [5,5,5]
+dice = [5,5,5,2,1]
+new_dice = [2,1]
