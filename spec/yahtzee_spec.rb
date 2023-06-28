@@ -10,6 +10,7 @@ describe Yahtzee do
     it "moves dice to hand after a roll" do 
         game = Yahtzee.new
         allow(game).to receive(:roll).and_return([5, 5, 5, 2, 1])
+        game.roll
         expect(game.hold('abc')).to eq "You've grabbed: 5, 5, 5"
     end
 end
