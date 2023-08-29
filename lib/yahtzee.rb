@@ -7,10 +7,10 @@ class Yahtzee
 
     def roll
         # include a|b|c|d|e selection
-        @dice.each do |dice|
-            @hand << dice
-        end
-        return @dice
+        # @dice.each do |dice|
+        #     @hand << dice
+        # end
+        return @hand.inspect
     end
 
     def hold(choice)
@@ -20,15 +20,30 @@ class Yahtzee
             choice_arr.each do |letter|
                 case letter
                 when "A" || "a"
-                    hold << @hand
+                    return "a"
+                    # hold.push(@hand[0])
+                when "B" || "b"
+                    return "b"
+                    # hold.push(@hand[1])
+                when "C" || "c"
+                    return "c"
+                    # hold.push(@hand[2])
+                when "D" || "d"
+                    return "d"
+                    # hold.push(@hand[3])
+                when "E" || "e"
+                    return "e"
+                    # hold.push(@hand[4])
+                end
             end
-            return @hand
-        elsif choice == nil
+            return hold.inspect
+        elsif choice == "all"
             return true
         end
     end
-
-    def start
-        return @dice
-    end
 end
+
+game = Yahtzee.new
+
+puts game.roll
+puts game.hold("ab")

@@ -13,4 +13,11 @@ describe Yahtzee do
         game.roll
         expect(game.hold('abc')).to eq "You've grabbed: 5, 5, 5"
     end
+
+    it "moves ALL dice to hand after roll" do 
+        game = Yahtzee.new
+        allow(game).to receive(:roll).and_return([5, 5, 5, 5, 1])
+        game.roll
+        expect(game.hold("all")).to eq "You've grabbed: 5, 5, 5, 5, 1"
+    end
 end
